@@ -1,7 +1,8 @@
+import Tareas from "../components/Tareas"
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <Tareas />
   )
 }
 

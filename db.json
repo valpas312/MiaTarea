@@ -1,0 +1,17 @@
+{
+    "tareas" : [
+        {
+            "id" : 1,
+            "titulo" : "Tarea 1",
+            "descripcion" : "Descripcion de la tarea 1",
+            "fecha" : "2023-05-09",
+            "estado" : "Pendiente"
+        },{
+            "id" : 2,
+            "titulo" : "Tarea 2",
+            "descripcion" : "Descripcion de la tarea 2",
+            "fecha" : "2023-05-09",
+            "estado" : "Pendiente"
+        }
+    ]
+}
