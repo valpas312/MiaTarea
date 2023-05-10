@@ -1,9 +1,8 @@
 import CardTarea from "./CardTarea"
 import { useQuery } from "@tanstack/react-query"
-import { Box, Button, Spinner } from "@chakra-ui/react"
+import { Box, Spinner } from "@chakra-ui/react"
 import { BASE_URL } from "../utils/BASE_URL"
-import { Link } from "react-router-dom"
-import { amarillo } from "../styles/utils/colores"
+import ModalComponent from "../styles/ModalComponent"
 
 const Tareas = () => {
 
@@ -23,14 +22,7 @@ const Tareas = () => {
             )
         }
     </Box>
-        <Button
-            as={Link}
-            to="/agregar-tarea"
-            background={amarillo}
-            w="20%"
-        >
-            Agregar Tarea
-        </Button>
+        <ModalComponent />
     </Box>
   )
 }

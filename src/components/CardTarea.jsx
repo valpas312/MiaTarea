@@ -1,6 +1,6 @@
 import { Button, Card, CardBody, CardFooter, CardHeader } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { amarillo } from "../styles/utils/colores";
+import { amarillo, rosaClaro } from "../styles/utils/colores";
 
 // eslint-disable-next-line react/prop-types
 const CardTarea = ({...props}) => {
@@ -14,7 +14,7 @@ const CardTarea = ({...props}) => {
   }
 
   return (
-    <Card w="30%" bg="pink">
+    <Card w="30%" bg={rosaClaro} _hover={{shadow:"xl"}} transition="ease-in-out .2s" >
       <CardHeader>
         <Button as={Link} to={`/correcciones/${id}`} background={amarillo} >{titulo}</Button>
       </CardHeader>
