@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Nav from "./components/Nav"
 import Home from "./pages/Home"
-import About from "./pages/About"
+import AgregarTarea from "./pages/AgregarTarea"
+import Tarea from "./pages/Tarea"
 
 const Router = () => {
   return (
@@ -9,7 +10,8 @@ const Router = () => {
         <Nav />
         <Routes>
             <Route path="/" element={<Home/>} />
-            <Route path="/about" element={<About/>} />
+            <Route path="/agregar-tarea" element={<AgregarTarea/>} />
+            <Route path="/correcciones/:tareaId" element={<Tarea/>} />
         </Routes>
     </BrowserRouter>
   )
