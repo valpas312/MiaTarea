@@ -12,18 +12,39 @@ import {
   FormLabel,
   Input,
   Textarea,
+  Spinner,
 } from "@chakra-ui/react";
+
+import { useMutation } from "@tanstack/react-query";
 
 import { useRef } from "react";
 
+import { amarillo } from "../styles/utils/colores";
+
+import { formatDate } from "../utils/formatDate";
+
 const ModalComponent = () => {
+  const { mutate, isLoading } = useMutation({
+    mutationKey: "agrearTarea",
+    mutationFn: (tarea) =>
+      fetch("http://localhost:4000/tareas", {
+        method: "POST",
+        body: JSON.stringify(tarea),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }),
+  });
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = useRef(null);
   const finalRef = useRef(null);
   return (
     <>
-      <Button onClick={onOpen}>Agregar Tarea</Button>
+      <Button bg={amarillo} onClick={onOpen}>
+        Agregar Tarea
+      </Button>
 
       <Modal
         initialFocusRef={initialRef}
@@ -36,27 +57,41 @@ const ModalComponent = () => {
           <ModalHeader>Agrega una tarea</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <FormControl>
+            <FormControl
+              as="form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const tarea = {
+                  titulo: e.target.titulo.value,
+                  descripcion: e.target.descripcion.value,
+                  fecha: formatDate(),
+                  archivo: e.target.archivo.value,
+                  estado: "Pendiente",
+                };
+                mutate(tarea);
+                onClose();
+              }}
+            >
               <FormLabel>Tarea</FormLabel>
-              <Textarea as={Input} placeholder="Tarea" ref={initialRef} />
+              <Input placeholder="Tarea de..." ref={initialRef} id="titulo" required />
 
-              <FormLabel>Detalles</FormLabel>
-              <Input placeholder="Detalle" />
-
-              <FormLabel>Fecha de entrega</FormLabel>
-              <Input placeholder="Fecha de entrega estimada" />
+              <FormLabel>Descripcion de la tarea</FormLabel>
+              <Textarea as={Input} placeholder="Descripcion" id="descripcion" required />
 
               <FormLabel>Archivos opcionales</FormLabel>
-              <Input placeholder="Archivos opcionales" type="file" />
-              <Input placeholder="Archivos opcionales" type="file" />
-              <Input placeholder="Archivos opcionales" type="file" />
-              <Input placeholder="Archivos opcionales" type="file" />
-
+              <Input
+                placeholder="Subir pdf opcional"
+                type="file"
+                id="archivo"
+                isRequired={false}
+              />
               <ModalFooter>
-                <Button colorScheme="blue" mr={3} type="submit">
-                  Enviar
+                <Button bg={amarillo} mr={3} type="submit">
+                  {isLoading ? <Spinner /> : "Enviar"}
                 </Button>
-                <Button onClick={onClose}>Cancel</Button>
+                <Button onClick={onClose} colorScheme="red">
+                  Cancelar
+                </Button>
               </ModalFooter>
             </FormControl>
           </ModalBody>

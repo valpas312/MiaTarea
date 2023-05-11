@@ -1,25 +1,28 @@
 {
-    "tareas" : [
-        {
-            "id" : 1,
-            "titulo" : "Tarea 1",
-            "descripcion" : "Descripcion de la tarea 1",
-            "fecha" : "2023-05-09",
-            "estado" : "Pendiente"
-        },{
-            "id" : 2,
-            "titulo" : "Tarea 2",
-            "descripcion" : "Descripcion de la tarea 2",
-            "fecha" : "2023-05-09",
-            "estado" : "Pendiente"
-        }
-    ],
-    "correcciones" : [
-        {
-            "id" : 1,
-            "titulo" :"Tarea 1",
-            "descripcion" : "Descripcion de la tarea 1",
-            "fecha" : "2023-05-10"
-        }
-    ]
+  "tareas": [
+    {
+      "id": 1,
+      "titulo": "Tarea 1",
+      "descripcion": "Descripcion de la tarea 1",
+      "detalle": "Detalle de la tarea 1",
+      "fecha": "2023-05-09",
+      "estado": "Terminada"
+    },
+    {
+      "titulo": "Matematicas",
+      "descripcion": "2*3",
+      "fecha": "2023-5-10",
+      "archivo": "",
+      "estado": "Pendiente",
+      "id": 2
+    }
+  ],
+  "correcciones": [
+    {
+      "id": 1,
+      "titulo": "Tarea 1",
+      "descripcion": "Descripcion de la tarea 1",
+      "fecha": "2023-05-10"
+    }
+  ]
 }

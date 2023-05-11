@@ -1,6 +1,7 @@
 import { Button, Card, CardBody, CardFooter, CardHeader } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { amarillo, rosaClaro } from "../styles/utils/colores";
+import ModalDelete from "../styles/ModalDelete";
 
 // eslint-disable-next-line react/prop-types
 const CardTarea = ({...props}) => {
@@ -28,6 +29,7 @@ const CardTarea = ({...props}) => {
         >
           {estado}
         </Button>
+        <ModalDelete id={id} />
       </CardFooter>
     </Card>
   )
