@@ -17,7 +17,7 @@ const Tareas = () => {
 
   return (
     <Box display="flex" gap="1rem" flexDirection="column" alignItems="center">
-    <Box w="100%" display="flex" alignItems="center" justifyContent="center" gap="1rem" p="1rem">
+    <Box w="100%" display="flex" alignItems="center" justifyContent="center" gap="1rem" p="1rem" flexWrap={"wrap"}>
         {
             isLoading ? <Spinner /> : isError ? <Text>{error.messagge}</Text> : (
                 data.length === 0 ? <Text>Todavia no hay tareas pendientes ni terminadas</Text> : (data.map((tarea) => (

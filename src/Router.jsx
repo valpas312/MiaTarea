@@ -3,15 +3,20 @@ import Nav from "./components/Nav"
 import Home from "./pages/Home"
 import AgregarTarea from "./pages/AgregarTarea"
 import Tarea from "./pages/Tarea"
+import useElement from "./hooks/useElement"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
 
 const Router = () => {
   return (
     <BrowserRouter>
         <Nav />
         <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/agregar-tarea" element={<AgregarTarea/>} />
-            <Route path="/correcciones/:tareaId" element={<Tarea/>} />
+            <Route path="/" element={useElement(<Home/>, <Login/>)} />
+            <Route path="/agregar-tarea" element={useElement(<AgregarTarea/>, <Login/>)} />
+            <Route path="/correcciones/:tareaId" element={useElement(<Tarea/>, <Login/>)} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/register" element={<Register/>} />
         </Routes>
     </BrowserRouter>
   )

@@ -42,7 +42,7 @@ const ModalComponent = () => {
   const finalRef = useRef(null);
   return (
     <>
-      <Button bg={amarillo} onClick={onOpen}>
+      <Button bg={amarillo} onClick={onOpen} _hover={{shadow:"xl"}}>
         Agregar Tarea
       </Button>
 

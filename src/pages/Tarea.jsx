@@ -1,7 +1,7 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { Box, Spinner, Text } from '@chakra-ui/react'
-import { rosaClaro } from '../styles/utils/colores'
+import { Box, Button, Spinner, Text } from '@chakra-ui/react'
+import { amarillo, rosaClaro } from '../styles/utils/colores'
 
 const Tarea = () => {
 
@@ -29,7 +29,12 @@ const Tarea = () => {
     >
         {
             isLoading ? <Spinner/> : isError ? <Text>{error.messagge}</Text> : (
-                correcciones.length === 0 ? <Text>No hay correcciones</Text> : (
+                correcciones.length === 0 ? (
+                    <>
+                        <Text>Todavia hay correcciones para esta tarea</Text>
+                        <Button as={Link} to={"/"} bg={amarillo} _hover={{shadow:"xl"}}>Volver</Button>
+                    </>
+                ) : (
                     correcciones.map((correccion) => (
                         <Box key={correccion.id}
                             display="flex"

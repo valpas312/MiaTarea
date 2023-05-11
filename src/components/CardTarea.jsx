@@ -15,7 +15,7 @@ const CardTarea = ({...props}) => {
   }
 
   return (
-    <Card w="30%" bg={rosaClaro} _hover={{shadow:"xl"}} transition="ease-in-out .2s" >
+    <Card minW="40%" maxW="90%" bg={rosaClaro} _hover={{shadow:"xl"}} transition="ease-in-out .2s" >
       <CardHeader>
         <Button as={Link} to={`/correcciones/${id}`} background={amarillo} >{titulo}</Button>
       </CardHeader>
