@@ -1,20 +1,20 @@
 {
   "tareas": [
     {
-      "id": 1,
-      "titulo": "Tarea 1",
-      "descripcion": "Descripcion de la tarea 1",
-      "detalle": "Detalle de la tarea 1",
-      "fecha": "2023-05-09",
-      "estado": "Terminada"
-    },
-    {
       "titulo": "Matematicas",
       "descripcion": "2*3",
       "fecha": "2023-5-10",
       "archivo": "",
       "estado": "Pendiente",
       "id": 2
+    },
+    {
+      "titulo": "Historia",
+      "descripcion": "sdjfgashjdjf",
+      "fecha": "2023-5-12",
+      "archivo": "",
+      "estado": "Pendiente",
+      "id": 3
     }
   ],
   "correcciones": [
@@ -25,22 +25,30 @@
       "fecha": "2023-05-10"
     }
   ],
-  "usuarios":[
+  "usuarios": [
     {
-      "id" : 1,
-      "nombre" : "Juan",
+      "id": 1,
+      "nombre": "Juan",
       "apellido": "Perez",
       "correo": "juanperez@gmail.com",
-      "contraseña" : "123456",
-      "tipo" : "alumno"
+      "contraseña": "123456",
+      "tipo": "alumno"
     },
     {
-      "id" : 2,
-      "nombre" : "Pedro",
+      "id": 2,
+      "nombre": "Pedro",
       "apellido": "Gonzalez",
       "correo": "juanperez@gmail.com",
-      "contraseña" : "123456",
-      "tipo" : "moderador"
+      "contraseña": "123456",
+      "tipo": "moderador"
+    },
+    {
+      "nombre": "asdasda",
+      "apellido": "sdasdasd",
+      "correo": "asdasd@gmail.com",
+      "contraseña": "123asd",
+      "tipo": "alumno",
+      "id": 3
     }
   ]
 }
