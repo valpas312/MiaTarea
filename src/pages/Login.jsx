@@ -8,12 +8,16 @@ import {
   Heading,
   Input,
   Text,
+  useToast
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { amarillo, rosaClaro2 } from "../styles/utils/colores";
 import { useQuery } from "@tanstack/react-query";
 
 const Login = () => {
+
+  const toast = useToast();
+
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["usuarios"],
     queryFn: () =>
@@ -52,7 +56,16 @@ const Login = () => {
         usuario.correo === correo && usuario.contraseña === contraseña
     )
       ? (setUser(usuario), navigate("/"))
-      : alert("correo o contraseña incorrectos");
+      : (
+          alert("Usuario o contraseña incorrectos"),
+          toast({
+            title: "Error",
+            description: "Recorda respetar mayusculas y minusculas",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          }) //toast de error
+      )
   };
 
   return (
@@ -64,7 +77,10 @@ const Login = () => {
       w="100%"
       gap="1rem"
     >
-      <Heading>Inicia sesion</Heading>
+      <Heading
+        as="h1"
+        size="xl"
+      >Inicia sesion</Heading>
       <FormControl
         as="form"
         onSubmit={handleSubmit}
@@ -79,16 +95,28 @@ const Login = () => {
         borderRadius={8}
         bg={rosaClaro2}
       >
-        <FormLabel>Nombre</FormLabel>
+        <FormLabel
+          htmlFor="nombre"
+          fontWeight="bold"
+        >Nombre</FormLabel>
         <Input type="text" placeholder="Nombre" id="nombre" required />
 
-        <FormLabel>Apellido</FormLabel>
+        <FormLabel
+          htmlFor="apellido"
+          fontWeight="bold"
+        >Apellido</FormLabel>
         <Input type="text" placeholder="Apellido" id="apellido" required />
 
-        <FormLabel>Correo</FormLabel>
+        <FormLabel
+          htmlFor="correo"
+          fontWeight="bold"
+        >Correo</FormLabel>
         <Input type="email" placeholder="Correo" id="correo" required />
 
-        <FormLabel>Contraseña</FormLabel>
+        <FormLabel
+          htmlFor="contraseña"
+          fontWeight="bold"
+        >Contraseña</FormLabel>
         <Input
           type="password"
           placeholder="Contraseña"
@@ -105,8 +133,9 @@ const Login = () => {
         </Button>
       </FormControl>
       <Text>
-        No tenes cuenta? <Link to={"/register"}>Registrate</Link>
+        No tenes cuenta?
       </Text>
+      <Button as={Link} to={"/register"} >Registrate</Button>
     </Box>
   );
 };

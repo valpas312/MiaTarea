@@ -38,28 +38,41 @@ const Register = () => {
            justifyContent="center"
            alignItems="center"
            gap="1rem"
-           minW="30%"
-           maxW="70%"
+           minW="40%"
+           maxW="50%"
            p={4}
            borderRadius={8}
            bg={rosaClaro2}
            boxShadow={`0px 0px 10px 0px ${amarillo}`}
        >
-           <FormLabel>Nombre</FormLabel>
+           <FormLabel
+                htmlFor="nombre"
+                fontWeight="bold"
+           >Nombre</FormLabel>
            <Input type="text" placeholder="Nombre" id="nombre" required />
 
-           <FormLabel>Apellido</FormLabel>
+           <FormLabel
+                htmlFor="apellido"
+                fontWeight="bold"
+           >Apellido</FormLabel>
            <Input type="text" placeholder="Apellido" id="apellido" required />
 
-           <FormLabel>Correo</FormLabel>
+           <FormLabel
+                htmlFor="correo"
+                fontWeight="bold"
+           >Correo</FormLabel>
            <Input type="email" placeholder="Correo" id="correo" required />
 
-           <FormLabel>Contraseña</FormLabel>
+           <FormLabel
+                htmlFor="contraseña"
+                fontWeight="bold"
+           >Contraseña</FormLabel>
            <Input type="password" placeholder="Contraseña" id="contraseña" required/>
 
            <Button type="submit" bg={amarillo} _hover={{shadow:"xl"}}>Iniciar sesión</Button>
        </FormControl>
-       <Text>Ya tenes cuenta? <Link to={"/login"}>Inicia sesion</Link></Text>
+       <Text>Ya tenes cuenta? </Text>
+        <Button as={Link} to={"/login"}>Inicia sesión</Button>
    </Box>
  )
 }

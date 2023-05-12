@@ -19,17 +19,21 @@ const Nav = () => {
       gap="1rem"
       boxShadow={`0px 0px 10px 0px ${rosaFuerte}`}
     >
-      <Button
-        colorScheme="red"
-        as={Link}
-        to={"/login"}
-        onClick={() => setUser([])}
-      >
-        Cerrar sesion
-      </Button>
-      <Button as={Link} to={"/"} background={amarillo}>
-        Home
-      </Button>
+      {user.nombre ? (
+        <>
+          <Button
+            colorScheme="red"
+            as={Link}
+            to={"/login"}
+            onClick={() => setUser([])}
+          >
+            Cerrar sesion
+          </Button>
+          <Button as={Link} to={"/"} background={amarillo}>
+            Home
+          </Button>
+        </>
+      ) : null}
     </Flex>
   );
 };
