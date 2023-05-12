@@ -25,7 +25,7 @@ import { formatDate } from "../utils/formatDate";
 
 const ModalComponent = () => {
   const { mutate, isLoading } = useMutation({
-    mutationKey: "agrearTarea",
+    mutationKey: ["agrearTarea"],
     mutationFn: (tarea) =>
       fetch("http://localhost:4000/tareas", {
         method: "POST",
@@ -80,10 +80,10 @@ const ModalComponent = () => {
 
               <FormLabel>Archivos opcionales</FormLabel>
               <Input
-                placeholder="Subir pdf opcional"
                 type="file"
                 id="archivo"
                 isRequired={false}
+                color="transparent"
               />
               <ModalFooter>
                 <Button bg={amarillo} mr={3} type="submit">

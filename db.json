@@ -24,5 +24,23 @@
       "descripcion": "Descripcion de la tarea 1",
       "fecha": "2023-05-10"
     }
+  ],
+  "usuarios":[
+    {
+      "id" : 1,
+      "nombre" : "Juan",
+      "apellido": "Perez",
+      "correo": "juanperez@gmail.com",
+      "contraseña" : "123456",
+      "tipo" : "alumno"
+    },
+    {
+      "id" : 2,
+      "nombre" : "Pedro",
+      "apellido": "Gonzalez",
+      "correo": "juanperez@gmail.com",
+      "contraseña" : "123456",
+      "tipo" : "moderador"
+    }
   ]
 }
