@@ -20,7 +20,8 @@ const CardTarea = ({...props}) => {
         <Button as={Link} to={`/correcciones/${id}`} background={amarillo} >{titulo}</Button>
       </CardHeader>
       <CardBody>
-        {descripcion}
+        {// eslint-disable-next-line react/prop-types
+        descripcion.length > 100 ? `${descripcion.slice(0, 100)}...` : descripcion}
       </CardBody>
       <CardFooter display="flex" alignItems="center" gap="1rem" >
         {fecha}

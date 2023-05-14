@@ -6,7 +6,9 @@
       "fecha": "2023-5-10",
       "archivo": "",
       "estado": "Pendiente",
-      "id": 2
+      "id": 2,
+      "id_usuario": 1,
+      "id_tarea": 1
     },
     {
       "titulo": "Historia",
@@ -14,7 +16,9 @@
       "fecha": "2023-5-12",
       "archivo": "",
       "estado": "Pendiente",
-      "id": 3
+      "id": 3,
+      "id_usuario": 1,
+      "id_tarea": 1
     }
   ],
   "correcciones": [
@@ -22,7 +26,9 @@
       "id": 1,
       "titulo": "Tarea 1",
       "descripcion": "Descripcion de la tarea 1",
-      "fecha": "2023-05-10"
+      "fecha": "2023-05-10",
+      "id_usuario": 1,
+      "id_tarea": 1
     }
   ],
   "usuarios": [
@@ -32,23 +38,16 @@
       "apellido": "Perez",
       "correo": "juanperez@gmail.com",
       "contraseña": "123456",
-      "tipo": "alumno"
-    },
-    {
-      "id": 2,
-      "nombre": "Pedro",
-      "apellido": "Gonzalez",
-      "correo": "juanperez@gmail.com",
-      "contraseña": "123456",
-      "tipo": "moderador"
-    },
-    {
-      "nombre": "asdasda",
-      "apellido": "sdasdasd",
-      "correo": "asdasd@gmail.com",
-      "contraseña": "123asd",
       "tipo": "alumno",
-      "id": 3
+      "id_usuario": 1
+    },
+    {
+      "nombre": "jajaja",
+      "apellido": "jijiji",
+      "correo": "asdf@gmail.com",
+      "contraseña": "ase123",
+      "tipo": "alumno",
+      "id": 2
     }
   ]
 }

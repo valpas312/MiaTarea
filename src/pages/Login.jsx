@@ -29,19 +29,18 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  console.log(data)
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    const buscarTipo = (correo) => {
-      const usuario = data.find((usuario) => usuario.correo === correo);
-      usuario === undefined ? null : usuario.tipo;
-    };
     const nombre = e.target.nombre.value;
     const apellido = e.target.apellido.value;
     const correo = e.target.correo.value;
     const contraseña = e.target.contraseña.value;
     //tipo de usuario
-    const tipo = buscarTipo(correo);
+    const tipo = data.filter((usuario) => usuario.correo === correo)[0].tipo;
+    //id_usuario
+    const id_usuario = data.filter((usuario) => usuario.correo === correo)[0].id_usuario;
 
     const usuario = {
       nombre,
@@ -49,6 +48,7 @@ const Login = () => {
       correo,
       contraseña,
       tipo,
+      id_usuario
     };
 
     data.find(
