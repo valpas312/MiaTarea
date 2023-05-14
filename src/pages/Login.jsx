@@ -29,13 +29,13 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const buscarTipo = (correo) => {
-    const usuario = data.find((usuario) => usuario.correo === correo);
-    return usuario.tipo;
-  };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    const buscarTipo = (correo) => {
+      const usuario = data.find((usuario) => usuario.correo === correo);
+      usuario === undefined ? null : usuario.tipo;
+    };
     const nombre = e.target.nombre.value;
     const apellido = e.target.apellido.value;
     const correo = e.target.correo.value;
@@ -57,14 +57,13 @@ const Login = () => {
     )
       ? (setUser(usuario), navigate("/"))
       : (
-          alert("Usuario o contraseña incorrectos"),
           toast({
-            title: "Error",
+            title: "Error de inicio de sesion",
             description: "Recorda respetar mayusculas y minusculas",
             status: "error",
             duration: 9000,
             isClosable: true,
-          }) //toast de error
+          })
       )
   };
 

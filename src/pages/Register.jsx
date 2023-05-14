@@ -9,14 +9,16 @@ import {
   Input,
   Spinner,
   Text,
+  useToast
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { amarillo, rosaClaro2 } from "../styles/utils/colores";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 const Register = () => {
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useContext(UserContext);
+  const toast = useToast();
 
   const navigate = useNavigate();
   
@@ -31,6 +33,18 @@ const Register = () => {
             },
         }),
     });
+
+    //verificar si el usuario ya existe
+    const { data } = useQuery({
+        queryKey: ["usuarios"],
+        queryFn: () =>
+            fetch("http://localhost:4000/usuarios").then((res) => res.json()),
+    });
+
+    const yaExiste = (correo) => {
+        const usuario = data.find((usuario) => usuario.correo === correo);
+        usuario === undefined ? false : true;
+    };
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -50,10 +64,19 @@ const Register = () => {
     };
 
 
-    setUser(usuario);
-    mutate(usuario);
-    navigate("/");
-
+    yaExiste(correo) ? (
+        toast({
+            title: "El usuario ya existe",
+            description: "El correo ya esta registrado",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+        })
+    ) : (
+        setUser(usuario),
+        mutate(usuario),
+        navigate("/")
+    );
   };
   return (
     <Box
