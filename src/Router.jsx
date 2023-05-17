@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Nav from "./components/Nav"
 import Home from "./pages/Home"
-import AgregarTarea from "./pages/AgregarTarea"
 import Tarea from "./pages/Tarea"
 import useElement from "./hooks/useElement"
 import Login from "./pages/Login"
@@ -13,7 +12,6 @@ const Router = () => {
         <Nav />
         <Routes>
             <Route path="/" element={useElement(<Home/>, <Login/>)} />
-            <Route path="/agregar-tarea" element={useElement(<AgregarTarea/>, <Login/>)} />
             <Route path="/correcciones/:tareaId" element={useElement(<Tarea/>, <Login/>)} />
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />

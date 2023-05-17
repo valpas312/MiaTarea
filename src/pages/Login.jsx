@@ -12,16 +12,24 @@ import {
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { amarillo, rosaClaro2 } from "../styles/utils/colores";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { API_URL } from "../utils/API_URL";
 
 const Login = () => {
 
   const toast = useToast();
 
-  const { data, isLoading, isError, error } = useQuery({
+  const { mutate, isError, isLoading, error } = useMutation({
     queryKey: ["usuarios"],
-    queryFn: () =>
-      fetch("http://localhost:4000/usuarios").then((res) => res.json()),
+    mutationFn: (usuario) =>
+      fetch(`${API_URL}/usuarios/login`,{
+        method: "POST",
+        body: JSON.stringify(usuario),
+        
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => res.json()),
   });
 
   // eslint-disable-next-line no-unused-vars
@@ -29,42 +37,41 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  console.log(data)
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nombre = e.target.nombre.value;
-    const apellido = e.target.apellido.value;
+
     const correo = e.target.correo.value;
     const contraseña = e.target.contraseña.value;
-    //tipo de usuario
-    const tipo = data.filter((usuario) => usuario.correo === correo)[0].tipo;
-    //id_usuario
-    const id_usuario = data.filter((usuario) => usuario.correo === correo)[0].id_usuario;
 
     const usuario = {
-      nombre,
-      apellido,
       correo,
       contraseña,
-      tipo,
-      id_usuario
-    };
+    }; 
 
-    data.find(
-      (usuario) =>
-        usuario.correo === correo && usuario.contraseña === contraseña
-    )
-      ? (setUser(usuario), navigate("/"))
-      : (
-          toast({
-            title: "Error de inicio de sesion",
-            description: "Recorda respetar mayusculas y minusculas",
-            status: "error",
-            duration: 9000,
-            isClosable: true,
-          })
-      )
+    mutate(usuario, {
+      onSuccess: (data) => {
+        setUser(data);
+        navigate("/");
+        toast({
+          title: "Bienvenido",
+          description: "Iniciaste sesion correctamente",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        })
+      },
+      onError: (error) => {
+        alert(error.message);
+        toast({
+          title: "Error",
+          description: "No se pudo iniciar sesion",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        })
+      },
+    });
   };
 
   return (
@@ -94,18 +101,6 @@ const Login = () => {
         borderRadius={8}
         bg={rosaClaro2}
       >
-        <FormLabel
-          htmlFor="nombre"
-          fontWeight="bold"
-        >Nombre</FormLabel>
-        <Input type="text" placeholder="Nombre" id="nombre" required />
-
-        <FormLabel
-          htmlFor="apellido"
-          fontWeight="bold"
-        >Apellido</FormLabel>
-        <Input type="text" placeholder="Apellido" id="apellido" required />
-
         <FormLabel
           htmlFor="correo"
           fontWeight="bold"
