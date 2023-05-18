@@ -7,7 +7,7 @@ import ModalDelete from "../styles/ModalDelete";
 const CardTarea = ({...props}) => {
 
   // eslint-disable-next-line react/prop-types
-  const { id, titulo, descripcion, fecha, estado } = props
+  const { _id, titulo, descripcion, fecha, estado } = props
 
   const colorDelEstado = {
     Pendiente: "red",
@@ -17,7 +17,7 @@ const CardTarea = ({...props}) => {
   return (
     <Card minW="40%" maxW="90%" bg={rosaClaro} _hover={{shadow:"xl"}} transition="ease-in-out .2s" >
       <CardHeader>
-        <Button as={Link} to={`/correcciones/${id}`} background={amarillo} >{titulo}</Button>
+        <Button as={Link} to={`/correcciones/${_id}`} background={amarillo} >{titulo}</Button>
       </CardHeader>
       <CardBody>
         {// eslint-disable-next-line react/prop-types
@@ -30,7 +30,7 @@ const CardTarea = ({...props}) => {
         >
           {estado}
         </Button>
-        <ModalDelete id={id} />
+        <ModalDelete id={_id} />
       </CardFooter>
     </Card>
   )
