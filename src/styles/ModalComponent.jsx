@@ -14,20 +14,17 @@ import {
   Textarea,
   Spinner,
 } from "@chakra-ui/react";
-
 import { useMutation } from "@tanstack/react-query";
-
 import { useRef } from "react";
-
 import { amarillo } from "../styles/utils/colores";
-
 import { formatDate } from "../utils/formatDate";
+import { API_URL } from "../utils/API_URL";
 
 const ModalComponent = () => {
   const { mutate, isLoading } = useMutation({
     mutationKey: ["agrearTarea"],
     mutationFn: (tarea) =>
-      fetch("http://localhost:4000/tareas", {
+      fetch(`${API_URL}/tareas/`, {
         method: "POST",
         body: JSON.stringify(tarea),
         headers: {
@@ -42,7 +39,7 @@ const ModalComponent = () => {
   const finalRef = useRef(null);
   return (
     <>
-      <Button bg={amarillo} onClick={onOpen} _hover={{shadow:"xl"}}>
+      <Button bg={amarillo} onClick={onOpen} _hover={{ shadow: "xl" }}>
         Agregar Tarea
       </Button>
 
@@ -73,10 +70,20 @@ const ModalComponent = () => {
               }}
             >
               <FormLabel>Tarea</FormLabel>
-              <Input placeholder="Tarea de..." ref={initialRef} id="titulo" required />
+              <Input
+                placeholder="Tarea de..."
+                ref={initialRef}
+                id="titulo"
+                required
+              />
 
               <FormLabel>Descripcion de la tarea</FormLabel>
-              <Textarea as={Input} placeholder="Descripcion" id="descripcion" required />
+              <Textarea
+                as={Input}
+                placeholder="Descripcion"
+                id="descripcion"
+                required
+              />
 
               <FormLabel>Archivos opcionales</FormLabel>
               <Input

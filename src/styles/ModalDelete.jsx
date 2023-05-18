@@ -11,6 +11,7 @@ import {
   } from '@chakra-ui/react'
 
 import { useMutation } from '@tanstack/react-query'
+import { API_URL } from '../utils/API_URL'
 
 // eslint-disable-next-line react/prop-types
 const ModalDelete = ({id}) => {
@@ -18,7 +19,7 @@ const ModalDelete = ({id}) => {
 
     const { mutate, isLoading } = useMutation({
         mutationKey: 'eliminarTarea',
-        mutationFn: (id) => fetch(`http://localhost:4000/tareas/${id}`, {
+        mutationFn: (id) => fetch(`${API_URL}/tareas/${id}`, {
             method: 'DELETE',
         }),
     })
