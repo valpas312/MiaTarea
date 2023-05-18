@@ -13,7 +13,8 @@ import {
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { amarillo, rosaClaro2 } from "../styles/utils/colores";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { API_URL } from "../utils/API_URL";
 
 const Register = () => {
   // eslint-disable-next-line no-unused-vars
@@ -25,7 +26,7 @@ const Register = () => {
   const { mutate, isLoading } = useMutation({
       mutationKey: ["agrearUsuario"],
       mutationFn: (usuario) => 
-         fetch("http://localhost:4000/usuarios", {
+         fetch(`${API_URL}/usuarios/`, {
             method: "POST",
             body: JSON.stringify(usuario),
             headers: {
@@ -33,18 +34,6 @@ const Register = () => {
             },
         }),
     });
-
-    //verificar si el usuario ya existe
-    const { data } = useQuery({
-        queryKey: ["usuarios"],
-        queryFn: () =>
-            fetch("http://localhost:4000/usuarios").then((res) => res.json()),
-    });
-
-    const yaExiste = (correo) => {
-        const usuario = data.find((usuario) => usuario.correo === correo);
-        usuario === undefined ? false : true;
-    };
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -63,20 +52,30 @@ const Register = () => {
         tipo,
     };
 
+    mutate(usuario, {
+        onSuccess: () => {
+          setUser(usuario);
+            toast({
+                title: "Usuario creado",
+                description: "El usuario se creó correctamente",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+            });
+            navigate("/");
+        },
+        onError: (error) => {
+            toast({
+                title: "Error",
+                description: "Ocurrió un error al crear el usuario",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+            });
+            console.log(error)
+        },
+    });
 
-    yaExiste(correo) ? (
-        toast({
-            title: "El usuario ya existe",
-            description: "El correo ya esta registrado",
-            status: "error",
-            duration: 3000,
-            isClosable: true,
-        })
-    ) : (
-        setUser(usuario),
-        mutate(usuario),
-        navigate("/")
-    );
   };
   return (
     <Box

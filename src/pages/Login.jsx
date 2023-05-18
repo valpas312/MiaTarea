@@ -25,11 +25,10 @@ const Login = () => {
       fetch(`${API_URL}/usuarios/login`,{
         method: "POST",
         body: JSON.stringify(usuario),
-        
         headers: {
           "Content-Type": "application/json",
         },
-      }).then((res) => res.json()),
+      }),
   });
 
   // eslint-disable-next-line no-unused-vars
@@ -50,8 +49,8 @@ const Login = () => {
     }; 
 
     mutate(usuario, {
-      onSuccess: (data) => {
-        setUser(data);
+      onSuccess: () => {
+        setUser(usuario);
         navigate("/");
         toast({
           title: "Bienvenido",

@@ -6,7 +6,7 @@ const useElement = (element, login) => {
     // eslint-disable-next-line no-unused-vars
     const [user, setUser] = useContext(UserContext);
 
-    if (user.nombre) {
+    if (user.correo) {
         return element;
     } else {
         return login;
