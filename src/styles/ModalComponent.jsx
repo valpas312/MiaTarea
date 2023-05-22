@@ -19,6 +19,8 @@ import { useRef } from "react";
 import { amarillo } from "../styles/utils/colores";
 import { formatDate } from "../utils/formatDate";
 import { API_URL } from "../utils/API_URL";
+import { useContext } from "react"; 
+import { UserContext } from "../App";
 
 const ModalComponent = () => {
   const { mutate, isLoading } = useMutation({
@@ -32,6 +34,9 @@ const ModalComponent = () => {
         },
       }),
   });
+
+  // eslint-disable-next-line no-unused-vars
+  const [user, setUser] = useContext(UserContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -64,6 +69,7 @@ const ModalComponent = () => {
                   fecha: formatDate(),
                   archivo: e.target.archivo.value,
                   estado: "Pendiente",
+                  correo: user.correo,
                 };
                 mutate(tarea);
                 onClose();
