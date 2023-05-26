@@ -20,7 +20,16 @@ const Tareas = () => {
         refetchInterval: 1000,
     });
 
-    console.log(data)
+    const {data:data2} = useQuery({
+        queryKey: ['usuario'],
+        queryFn: () => fetch(`${API_URL}/usuarios/${user.correo}`)
+        .then((res) => res.json())
+    });
+
+    if(data2 !== undefined){
+        setUser(data2)
+    }
+
 
   return (
     <Box display="flex" gap="1rem" flexDirection="column" alignItems="center">

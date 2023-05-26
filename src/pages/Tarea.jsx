@@ -14,8 +14,6 @@ const Tarea = () => {
         .then((res) => res.json())
     })
 
-    console.log(data)
-
   return (
     <Box
         display="flex"
@@ -25,7 +23,7 @@ const Tarea = () => {
     >
         {
             isLoading ? <Spinner/> : isError ? <Text>{error.messagge}</Text> : (
-                data.length === 0 ? (
+                data === null || data === undefined || data.length === 0 ? (
                     <>
                         <Text>Todavia hay correcciones para esta tarea</Text>
                         <Button as={Link} to={"/"} bg={amarillo} _hover={{shadow:"xl"}}>Volver</Button>

@@ -5,6 +5,7 @@ import Tarea from "./pages/Tarea"
 import useElement from "./hooks/useElement"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import Admin from "./pages/Admin"
 
 const Router = () => {
   return (
@@ -15,6 +16,8 @@ const Router = () => {
             <Route path="/correcciones/:tareaId" element={useElement(<Tarea/>, <Login/>)} />
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
+            <Route path="*" element={<h1>404</h1>} />
+            <Route path="/admin" element={useElement(<Admin/>, <Login/>)} />
         </Routes>
     </BrowserRouter>
   )

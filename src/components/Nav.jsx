@@ -32,6 +32,13 @@ const Nav = () => {
           <Button as={Link} to={"/"} background={amarillo}>
             Home
           </Button>
+          {
+            user.tipo === "admin" ? (
+              <Button as={Link} to={"/admin"} background={amarillo}>
+                Admin Panel
+              </Button>
+            ) : null
+          }
         </>
       ) : null}
     </Flex>

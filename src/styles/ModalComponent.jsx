@@ -67,7 +67,7 @@ const ModalComponent = () => {
                   titulo: e.target.titulo.value,
                   descripcion: e.target.descripcion.value,
                   fecha: formatDate(),
-                  archivo: e.target.archivo.value,
+                  // archivo: e.target.archivo.value,
                   estado: "Pendiente",
                   correo: user.correo,
                 };
@@ -91,13 +91,13 @@ const ModalComponent = () => {
                 required
               />
 
-              <FormLabel>Archivos opcionales</FormLabel>
+              {/* <FormLabel>Archivos opcionales</FormLabel>
               <Input
                 type="file"
                 id="archivo"
                 isRequired={false}
-                color="transparent"
-              />
+                name="archivo"
+              /> */}
               <ModalFooter>
                 <Button bg={amarillo} mr={3} type="submit">
                   {isLoading ? <Spinner /> : "Enviar"}

@@ -14,6 +14,7 @@ const CardTarea = ({...props}) => {
     Terminada: "green",
   }
 
+
   return (
     <Card minW="40%" maxW="90%" bg={rosaClaro} _hover={{shadow:"xl"}} transition="ease-in-out .2s" >
       <CardHeader>
