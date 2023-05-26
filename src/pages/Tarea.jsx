@@ -10,7 +10,7 @@ const Tarea = () => {
 
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['tarea'],
-        queryFn: () => fetch(`${API_URL}/tareas/correccion/${tareaId}`)
+        queryFn: () => fetch(`${API_URL}/correcciones/correccion/${tareaId}`)
         .then((res) => res.json())
     })
 

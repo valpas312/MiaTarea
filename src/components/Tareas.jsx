@@ -30,8 +30,6 @@ const Tareas = () => {
         setUser(data2)
     }
 
-    console.log(data)
-
   return (
     <Box display="flex" gap="1rem" flexDirection="column" alignItems="center">
     <Box w="100%" display="flex" alignItems="center" justifyContent="center" gap="1rem" p="1rem" flexWrap={"wrap"}>
