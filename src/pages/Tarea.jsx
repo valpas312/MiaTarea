@@ -40,7 +40,8 @@ const Tarea = () => {
                             borderRadius="1rem"
                         >
                             <Text fontWeight="bold">{data.titulo}</Text>
-                            <Text>{data.descripcion}</Text>
+                            <Text>{data.correccion}</Text>
+                            <Text>{data.aclaraciones}</Text>
                             <Text>{data.fecha}</Text>
                             <Button as={Link} to={"/"} bg={amarillo} _hover={{shadow:"xl"}}>Volver</Button>
                         </Box>
