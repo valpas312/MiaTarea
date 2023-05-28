@@ -3,7 +3,6 @@ import { API_URL } from "../utils/API_URL"
 import { Box, Spinner, Text } from "@chakra-ui/react";
 import CardTarea from "../components/CardTarea";
 
-
 const Admin = () => {
 
   const { data, isLoading, isError, error } = useQuery({
@@ -14,6 +13,8 @@ const Admin = () => {
     refetchOnReconnect: true,
     refetchInterval: 5000,
   });
+
+  console.log(data)
 
   return (
     <Box display="flex" gap="1rem" flexDirection="column" alignItems="center">
