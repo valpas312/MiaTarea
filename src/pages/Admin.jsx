@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query"
 import { API_URL } from "../utils/API_URL"
-import { Box, Spinner, Text } from "@chakra-ui/react";
+import { Spinner, Text } from "@chakra-ui/react";
 import CardTarea from "../components/CardTarea";
+import GenericBox from "../styles/GenericBox";
 
 const Admin = () => {
 
@@ -14,11 +15,9 @@ const Admin = () => {
     refetchInterval: 5000,
   });
 
-  console.log(data)
-
   return (
-    <Box display="flex" gap="1rem" flexDirection="column" alignItems="center">
-    <Box w="100%" display="flex" alignItems="center" justifyContent="center" gap="1rem" p="1rem" flexWrap={"wrap"}>
+    <GenericBox gap="1rem" fd="column">
+    <GenericBox w="100%" gap="1rem" p="1rem" fw={"wrap"}>
         {
             isLoading ? <Spinner /> : isError ? <Text>{error.messagge}</Text> : (
                 data === undefined || data.length === 0 ? <Text>Todavia no hay tareas pendientes ni terminadas</Text> : (data.map((tarea) => (
@@ -26,8 +25,8 @@ const Admin = () => {
                 )))
             )
         }
-    </Box>
-    </Box>
+    </GenericBox>
+    </GenericBox>
   )
 }
 

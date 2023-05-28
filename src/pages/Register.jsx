@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../App";
 import {
-  Box,
   Button,
   FormControl,
   FormLabel,
@@ -15,6 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { amarillo, rosaClaro2 } from "../styles/utils/colores";
 import { useMutation } from "@tanstack/react-query";
 import { API_URL } from "../utils/API_URL";
+import GenericBox from "../styles/GenericBox";
 
 const Register = () => {
   // eslint-disable-next-line no-unused-vars
@@ -78,11 +78,8 @@ const Register = () => {
 
   };
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
+    <GenericBox
+      fd="column"
       w="100%"
       gap="1rem"
     >
@@ -135,7 +132,7 @@ const Register = () => {
       <Button as={Link} to={"/login"}>
         Inicia sesión
       </Button>
-    </Box>
+    </GenericBox>
   );
 };
 

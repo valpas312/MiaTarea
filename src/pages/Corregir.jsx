@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import { API_URL } from "../utils/API_URL"
-import { Box, Heading, Text } from "@chakra-ui/react"
+import { Heading, Text } from "@chakra-ui/react"
 import FormCorreccion from "../components/FormCorreccion"
+import GenericBox from "../styles/GenericBox"
 
 const Corregir = () => {
 
@@ -17,23 +18,23 @@ const Corregir = () => {
   });
 
 
-  return (<Box>
+  return (<GenericBox fd="column" gap="1rem">
     <Heading>Corregir tarea</Heading>
-    <Box>
+    <GenericBox>
     {
       isLoading ? <p>Cargando...</p> : isError ? <p>{error.message}</p> : (
-        <Box>
+        <GenericBox fd="column" gap="1rem">
           <Text>{data.titulo}</Text>
           <Text>{data.descripcion}</Text>
           <Text>{data.fecha}</Text>
           <Text>{data.estado}</Text>
           <Text>{data.correo}</Text>
-        </Box>
+        </GenericBox>
       )
     }
-    </Box>
+    </GenericBox>
     <FormCorreccion {...data} />
-  </Box>
+  </GenericBox>
   )
 }
 

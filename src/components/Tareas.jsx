@@ -1,10 +1,11 @@
 import CardTarea from "./CardTarea"
 import { useQuery } from "@tanstack/react-query"
-import { Box, Spinner, Text } from "@chakra-ui/react"
+import { Spinner, Text } from "@chakra-ui/react"
 import ModalComponent from "../styles/ModalComponent"
 import { useContext } from "react"
 import { UserContext } from "../App"
 import { API_URL } from "../utils/API_URL"
+import GenericBox from "../styles/GenericBox"
 
 const Tareas = () => {
 
@@ -31,8 +32,8 @@ const Tareas = () => {
     }
 
   return (
-    <Box display="flex" gap="1rem" flexDirection="column" alignItems="center">
-    <Box w="100%" display="flex" alignItems="center" justifyContent="center" gap="1rem" p="1rem" flexWrap={"wrap"}>
+    <GenericBox gap="1rem" fd="column">
+    <GenericBox w="100%" gap="1rem" p="1rem" fw={"wrap"}>
         {
             isLoading ? <Spinner /> : isError ? <Text>{error.messagge}</Text> : (
                 data === undefined || data.length === 0 ? <Text>Todavia no hay tareas pendientes ni terminadas</Text> : (data.map((tarea) => (
@@ -40,9 +41,9 @@ const Tareas = () => {
                 )))
             )
         }
-    </Box>
+    </GenericBox>
         <ModalComponent />
-    </Box>
+    </GenericBox>
   )
 }
 

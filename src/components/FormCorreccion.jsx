@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
+import { Button, FormControl, FormLabel, Input, Textarea } from "@chakra-ui/react"
 import { useMutation } from "@tanstack/react-query"
 import { API_URL } from "../utils/API_URL"
 import { useParams } from "react-router-dom"
@@ -23,9 +23,22 @@ const FormCorreccion = ({...props}) => {
             }).then((res) => res.json())
     })
 
+    const { mutate: mutateTarea } = useMutation({
+        mutationKey: ['tarea'],
+        mutationFn: (tarea) =>
+            fetch(`${API_URL}/tareas/${tareaId}`, {
+                method: 'PUT',
+                body: JSON.stringify(tarea),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((res) => res.json())
+    })
+
   return (
     <FormControl
         as="form"
+        w="70%"
         onSubmit={(e) => {
             e.preventDefault()
             const correccion = {
@@ -37,10 +50,11 @@ const FormCorreccion = ({...props}) => {
                 fecha: formatDate(new Date())
             }
             mutate(correccion)
+            mutateTarea({estado: 'Terminada'})
         }}
     >
         <FormLabel>Correccion</FormLabel>
-        <Input required type="textarea" placeholder="Correccion" />
+        <Textarea placeholder="Correccion" required as="input" />
 
         <FormLabel>Aclaraciones</FormLabel>
         <Input type="text" placeholder="Aclaraciones" />
