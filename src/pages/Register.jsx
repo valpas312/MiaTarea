@@ -26,7 +26,7 @@ const Register = () => {
   const { mutate, isLoading } = useMutation({
       mutationKey: ["agrearUsuario"],
       mutationFn: (usuario) => 
-         fetch(`${API_URL}/usuarios/`, {
+         fetch(`${API_URL}/usuarios/register`, {
             method: "POST",
             body: JSON.stringify(usuario),
             headers: {

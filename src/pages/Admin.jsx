@@ -7,7 +7,7 @@ import GenericBox from "../styles/GenericBox";
 const Admin = () => {
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ['tareas'],
+    queryKey: ['correcciones'],
     queryFn: () => fetch(`${API_URL}/tareas/`).then((res) => res.json()),
     refetchOnMount: true,
     refetchOnWindowFocus: true,

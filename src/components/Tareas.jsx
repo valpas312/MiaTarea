@@ -21,16 +21,6 @@ const Tareas = () => {
         refetchInterval: 1000,
     });
 
-    const {data:data2} = useQuery({
-        queryKey: ['usuario'],
-        queryFn: () => fetch(`${API_URL}/usuarios/${user.correo}`)
-        .then((res) => res.json())
-    });
-
-    if(data2 !== undefined){
-        setUser(data2)
-    }
-
   return (
     <GenericBox gap="1rem" fd="column">
     <GenericBox w="100%" gap="1rem" p="1rem" fw={"wrap"}>

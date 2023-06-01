@@ -28,8 +28,11 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-      }),
+      }).then((res) => res.json())
+        .then(data => setUser(data))
+        .catch(err => console.log(err))
   });
+
 
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useContext(UserContext);
@@ -50,27 +53,27 @@ const Login = () => {
 
     mutate(usuario, {
       onSuccess: () => {
-        setUser(usuario);
-        navigate("/");
         toast({
-          title: "Bienvenido",
-          description: "Iniciaste sesion correctamente",
+          title: "Usuario creado",
+          description: "Se inició sesion correctamente",
           status: "success",
           duration: 5000,
           isClosable: true,
-        })
+        });
+        navigate("/");
       },
-      onError: (error) => {
-        alert(error.message);
+      onError: () => {
         toast({
           title: "Error",
           description: "No se pudo iniciar sesion",
           status: "error",
           duration: 5000,
           isClosable: true,
-        })
-      },
+        });
+      }
     });
+    
+    
   };
 
   return (
