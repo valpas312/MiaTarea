@@ -29,10 +29,12 @@ const Login = () => {
           "Content-Type": "application/json",
         },
       }).then((res) => res.json())
-        .then(data => setUser(data))
+        .then(data => {
+          setUser(data),
+          localStorage.setItem("user", JSON.stringify(data))
+        })
         .catch(err => console.log(err))
   });
-
 
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useContext(UserContext);

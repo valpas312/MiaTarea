@@ -25,7 +25,10 @@ const Nav = () => {
             colorScheme="red"
             as={Link}
             to={"/login"}
-            onClick={() => setUser([])}
+            onClick={() => {
+              setUser({});
+              localStorage.removeItem("user");
+            }}
           >
             Cerrar sesion
           </Button>
