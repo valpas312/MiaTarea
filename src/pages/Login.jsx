@@ -56,7 +56,7 @@ const Login = () => {
     mutate(usuario, {
       onSuccess: () => {
         toast({
-          title: "Usuario creado",
+          title: "Bienvenido",
           description: "Se inició sesion correctamente",
           status: "success",
           duration: 5000,
